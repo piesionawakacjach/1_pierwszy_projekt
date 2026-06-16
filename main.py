@@ -6,8 +6,6 @@
 from klasy import Sklep, Produkt, Koszyk
 import os
 
-
-
 def startTest():
 
     p1 = Produkt("Ogórek", 10, 5)
@@ -18,16 +16,12 @@ def startTest():
 
     moj_sklep = Sklep("MOJ SKLEP", lista_produktow)
 
-    print(moj_sklep)
-
     moj_sklep.pokaz_menu()
 
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    if True:
         startTest()
-    else:
-        pass
+
 
 

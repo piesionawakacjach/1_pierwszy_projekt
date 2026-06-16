@@ -16,6 +16,17 @@ class Koszyk:
         else:
             print("Więcej chcesz niż jest")
 
+    def dodaj_produkt2(self, produkt, ilosc):
+        # niepotrzebne gdyż prompt pobiera tylko prawidłową wartość z zakresu
+        if ilosc <= 0:
+            raise ValueError("Ilość musi być większa od zera.")
+
+        if produkt.ilosc < ilosc:
+            raise ValueError(f"Nie ma tylu sztuk produktu {produkt.nazwa}.")
+
+        produkt.ilosc -= ilosc
+        self.zawartosc.append((produkt, ilosc))
+
     def wyswietl(self):
         print("Zawartość koszyka:")
         if len(self.zawartosc) == 0:
@@ -48,8 +59,6 @@ class Sklep:
     def __str__(self):
         return f"Name: {self.nazwa}\nListOfProducts: {self.lista_produktow}\n"
 
-#    def __repr__(self):
-        return f"Name: {self.name}\nListOfProducts: {self.listOfProducts}\n"
     def pokaz_menu(self):
 
         while True:
@@ -86,6 +95,13 @@ class Sklep:
                         return
                     elif 0 < ilosc_produktu <= produkt.ilosc:
                         koszyk.dodaj_produkt(produkt, ilosc_produktu)
+
+#       obsługa wyjątku (niepotrzebna)
+#                        try:
+#                            koszyk.dodaj_produkt2(produkt, ilosc_produktu)
+#                        except ValueError as error:
+#                            print(f"Błąd: {error}")
+
                         clear_screen()
                         koszyk.wyswietl()
                         return
