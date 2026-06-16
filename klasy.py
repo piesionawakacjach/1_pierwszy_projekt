@@ -21,8 +21,11 @@ class Koszyk:
         if len(self.zawartosc) == 0:
             print("Koszyk jest pusty")
         else:
+            suma = 0
             for produkt, ilosc in self.zawartosc:
                 print(f"{produkt.nazwa} - cena({produkt.cena}) - ilosc({ilosc})")
+                suma += produkt.cena * ilosc
+            print(f"Razem: {suma} zł")
 
 class Produkt:
     def __init__(self, nazwa, cena, ilosc):
